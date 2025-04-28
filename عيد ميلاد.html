@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مفاجأة لخطيبتي ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      position: relative;
+      height: 100vh;
+    }
+    /* شاشة البداية */
+    #intro {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      z-index: 10;
+      animation: fadeOut 2s forwards;
+      animation-delay: 2s;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    /* محتوى الصفحة */
+    #main-content {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    img {
+      width: 600px; /* تم تصغير الصورة مرتين */
+      height: 600px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    }
+    h1 {
+      font-size: 40px;
+      color: #d6336c;
+      text-shadow: 2px 2px #fff;
+    }
+    p {
+      font-size: 22px;
+      color: #800000;
+      margin: 20px 0;
+    }
+    #balloons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
+      border-radius: 50% 50% 45% 45%;
+      animation: floatUp 10s infinite ease-in;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    /* إضافة تصميم متجاوب */
+    @media (max-width: 768px) {
+      /* تغيير حجم الصورة ليناسب الشاشة الصغيرة */
+      img {
+        width: 80%; /* عرض الصورة على 80% من العرض */
+        height: auto; /* الحفاظ على النسبة الأصلية للصورة */
+      }
+      
+      /* تغيير الخطوط لتناسب الشاشات الصغيرة */
+      h1 {
+        font-size: 28px;
+      }
+      
+      p {
+        font-size: 18px;
+      }
+
+      iframe {
+        width: 100%; /* تكبير الفيديو ليغطي 100% من العرض */
+        height: 315px; /* تغيير الارتفاع ليناسب الحجم الجديد */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شاشة المقدمة -->
+  <div id="intro">جهزي نفسك للمفاجأة 💖</div>
+
+  <!-- المحتوى الرئيسي -->
+  <div id="main-content">
+    <img src="https://i.ibb.co/Pvz9XPx3/photo-5798845576845051147-y.jpg" alt="بطوطتي الجميلة">
+    <h1>كل سنة وانتي طيبة يا ملاكي ❤️</h1>
+    <p>بحبك من كل قلبي.. وإن شاء الله العمر كله مع بعض يا أجمل نعمة 🥰🎂</p>
+
+    <!-- مشغل يوتيوب من الثانية 144 -->
+    <iframe id="music" width="560" height="315" src="https://www.youtube.com/embed/iiENDJ9_luA?start=144" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <div id="balloons"></div>
+
+  <script>
+    // بالونات
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDuration = (6 + Math.random() * 4) + 's';
+      document.getElementById('balloons').appendChild(balloon);
+      setTimeout(() => balloon.remove(), 10000);
+    }
+    setInterval(createBalloon, 500);
+
+    // تشغيل الأغنية بعد دخول الصفحة مع تأخير لمدة 3 ثواني
+    setTimeout(() => {
+      const music = document.getElementById('music');
+      music.play();
+    }, 3000);
+  </script>
+
+</body>
+</html>
